@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blurr-Home</title>
+
+    <link rel="stylesheet" href="./assets/font/stylesheet.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
+    <link href="./dist/output.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.1/dist/locomotive-scroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+  </head>
+  <body class="bg-dark">
+      <header>
+        <div class="container">
+          <div class="flex flex-wrap justify-between">
+            <div class="logo-brand flex items-center">
+              <a href="/index.html">
+                <svg width="78" height="24" viewBox="0 0 78 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17.3055 17.0547C17.3055 20.1801 15.2797 23.6142 9.9164 23.6142H0V0.771729H9.26045C13.4277 0.771729 16.1093 3.27977 16.1093 6.67526C16.1093 8.27655 15.5113 10.6495 12.8875 11.4212C15.9164 11.8457 17.3055 14.4309 17.3055 17.0547ZM5.209 5.30549V9.68491H8.8553C10.09 9.68491 10.9196 8.89391 10.9196 7.50485C10.9196 6.34729 10.3215 5.32478 8.89389 5.32478H5.209V5.30549ZM12.0579 16.5145C12.0579 15.3183 11.2283 13.9679 9.27974 13.9679H5.209V19.0804H9.27974C11.1318 19.0804 12.0579 17.8071 12.0579 16.5145Z" fill="white"/>
+                  <path d="M18.8682 0H23.7685V23.6141H18.8682V0Z" fill="white"/>
+                  <path d="M41.5177 8.16077V23.6141H36.6174V20.9518C36.0772 23.1125 33.6077 24 32.1801 24C28.0708 24 26.045 21.2219 26.045 16.4759V8.16077H30.9454V15.9164C30.9454 18.2701 32.373 19.1961 33.627 19.1961C34.9196 19.1961 36.6174 18.5016 36.6174 15.9164V8.16077H41.5177Z" fill="white"/>
+                  <path d="M55.7942 8.21864L54.6366 12.8874C53.672 12.3473 52.9196 12.2894 52.418 12.2894C50.4887 12.2894 48.9067 13.8907 48.9067 18.463V23.6141H44.0064V8.16076H48.8489V11.4019C49.7363 8.85529 51.6077 7.75562 53.4984 7.75562C54.1929 7.75562 54.9839 7.83279 55.7942 8.21864Z" fill="white"/>
+                  <path d="M68.1222 8.21864L66.9646 12.8874C66 12.3473 65.2476 12.2894 64.746 12.2894C62.8167 12.2894 61.2347 13.8907 61.2347 18.463V23.6141H56.3151V8.16076H61.1576V11.4019C62.045 8.85529 63.9164 7.75562 65.8071 7.75562C66.5402 7.75562 67.3312 7.83279 68.1222 8.21864Z" fill="white"/>
+                  <path d="M73.8797 0C71.6643 0 69.8797 1.78462 69.8797 4C69.8797 6.21538 71.6643 8 73.8797 8C76.0951 8 77.8797 6.21538 77.8797 4C77.8797 1.78462 76.0643 0 73.8797 0ZM73.8797 0.615385C75.7566 0.615385 77.2643 2.12308 77.2643 4C77.2643 5.87692 75.7566 7.38462 73.8797 7.38462C72.0028 7.38462 70.4951 5.87692 70.4951 4C70.4951 2.12308 72.0028 0.615385 73.8797 0.615385ZM72.6489 2.15385V5.84615H73.2643V4.61538H74.3105L74.8028 5.84615H75.4182L74.8951 4.55385C75.3874 4.4 75.7259 3.93846 75.7259 3.38462C75.7259 2.70769 75.172 2.15385 74.4951 2.15385H72.6489ZM73.2643 2.76923H74.4951C74.8643 2.76923 75.1105 3.01538 75.1105 3.38462C75.1105 3.75385 74.8643 4 74.4951 4H73.2643V2.76923Z" fill="white"/>
+              </svg>              
+              </a>
+            </div>
+            <button id="toggle-button" data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+              <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+            </button>
+            <div id="nav-toggle" class="items-center hidden w-full lg:block md:w-auto">
+              <div class="nav-wrapper">
+                <nav class="nav">
+                   <a href="#" class="hover-this px-5 text-lg"><span>Lavori</span></a>
+                   <a href="#" class="hover-this px-5 text-lg"><span>Cosa Facciamo</span></a>
+                   <a href="#" class="hover-this px-5 text-lg"><span>Studio</span></a>
+                   <a href="#" class="hover-this pl-5 text-lg"><span>Lavora con noi</span></a>
+                </nav>
+              </div>
+            </div>
+          </div>
+      </header>
+      <!-- <div class="cursor"></div> -->
+      <div data-scroll-container>
+        <div class="container">
+          <main>
+            <section id="section1" data-scroll class="h-screen flex justify-center flex-col">
+              <div class="font-helvetica tracking-tight text-4xl sm:text-5xl md:text-6xl lg:text-8xl lg:w-3/4 font-medium text-primary-500 leading-13 md:leading-25 reveal-text">Uno studio che aiuta le aziende digital a creare soluzioni digital.</div>
+            </section>
+  
+            <section id="section2" data-scroll>
+              <div class="grid sm:grid-cols-2 items-center gap-10 lg:gap-20 overflow-hidden">
+                <div id="rectangle" class="reveal-img relative">
+                  <span></span>
+                  <img src="./assets/img/Rectangle2.png" alt="Rectangle2" class="w-[120%] parallax-img">
+                </div>
+                <div>
+                  <div class="title font-helvetica flex gap-3 text-primary-500 text-base items-center">
+                    <i></i>
+                    <div>Nati con la voglia di creare il nuovo</div>
+                  </div>
+                  <div class="overflow-hidden">
+                    <h1 class="font-medium text-primary-500 leading-[2rem] md:leading-12 mt-6">Amiamo comunicare attraverso creatività e la semplicità.</h1>
+                  </div>
+                  <p class="mt-6 mb-7">La nostra passione per la creatività ci spinge a realizzare e sviluppare design unici, capaci di dare risalto alle caratteristiche principali delle imprese.</p>
+                  <p>Il nostro focus è B2B e lavoriamo direttamente con altre Web Agency / Freelancer / Consulenti per occuparci del prodotto.</p>
+                </div>
+              </div>
+            </section>
+  
+            <section id="section3" data-scroll>
+              <div class="title font-helvetica flex gap-3 text-primary-500 text-base items-center">
+                <i></i>
+                <div>Nati con la voglia di creare il nuovo</div>
+              </div>
+              
+              <div class="grid sm:grid-cols-2 gap-10 md:gap-20 mt-6">
+                <div class="">
+                    <h1 class="font-medium text-primary-500 leading-[2rem] md:leading-12">Aiutiamo le aziende a scalare e produrre più progetti in tempo.</h1>
+                </div>
+                <div>
+                  <p class="mb-7">Essendo uno studio verticale siamo in grado di rimanere sempre aggiornati utilizziamo le migliori tecnologie e metodi smart per creare i tuoi progetti in tempistiche brevi.</p>
+                  <p>Non solo, utilizziamo il famoso page builder chiamato Elementor per poter dare anche a voi la possibilità di gestire o modificare i siti dei vostri clienti.</p>
+                </div>
+              </div>
+            </section>
+  
+            <section data-scroll>
+              <div class="sm:w-3/4 mx-auto">
+                <div class="overflow-hidden flex items-center">
+                  <i></i>
+                </div>
+                <div class="overflow-hidden">
+                  <span>
+                    Come possiamo aiutarti
+                  </span>
+                </div>
+                <div class="overflow-hidden">
+                  <h1 class="font-medium text-primary-500 leading-[2rem] md:leading-12 mt-6">Ci siamo verticalizzati sulla creazione di siti web in Wordpress e Custom, la nostra esperienza è nelle tue mani.</h1>
+                </div>
+                <p class="italic mt-5">Lavoriamo con 3 principali metodi di sviluppo in base al tipo di progetto</p>
+              </div>
+            </section>
+  
+            <section data-scroll id="section5" class="md:w-9/12 lg:w-7/12 mx-auto">
+              <div class="sm:grid grid-flow-row-dense sm:grid-cols-4 gap-8 items-center">
+                <div class="col-span-1">
+                  <img src="./assets/img/wordpress.svg" class="sm:w-full mx-auto mb-5 sm:mb-0">
+                </div>
+                <div class="col-span-3 text-center sm:text-left">
+                  <div class="overflow-hidden mb-3 sm:mb-7">
+                    <h2 class="text-2xl text-primary-500 font-bold font-dm">Wordpress + <span class="italic font-medium">Custom Frontend</span></h2>
+                  </div>
+                  <p class="text-xl leading-6">Se sai già che non metterai mano al layout del del tuo sito ma solo ai contenuti consigliamo una Soluzione Custom, più leggero, performante e più creativo.</p>
+                </div>
+              </div>
+  
+              <div class="sm:grid grid-flow-row-dense sm:grid-cols-4 gap-8 items-center my-10">
+                <div class="col-span-1">
+                  <img src="./assets/img/wordpress.svg" class="sm:w-full mx-auto mb-5 sm:mb-0">
+                </div>
+                <div class="col-span-3 text-center sm:text-left">
+                  <div class="overflow-hidden mb-3 sm:mb-7">
+                    <h2 class="text-2xl text-primary-500 font-bold font-dm">Wordpress + <span class="italic font-medium">Elementor</span></h2>
+                  </div>
+                  <div class="overflow-hidden">
+                    <p class="text-xl leading-6">Se vuoi essere indipendente e avere la possibilità di modificare l’aspetto del tuo sito come e quando vuoi, sicuramente la soluzione con Elementor fa al caso tuo, è anche la soluzione più economica e veloce.</p>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="sm:grid grid-flow-row-dense sm:grid-cols-4 gap-8 items-center">
+                <div class="col-span-1">
+                  <img src="./assets/img/wordpress.svg" class="sm:w-full mx-auto mb-5 sm:mb-0">
+                </div>
+                <div class="col-span-3 text-center sm:text-left">
+                  <div class="overflow-hidden mb-3 sm:mb-7">
+                    <h2 class="text-2xl text-primary-500 font-bold font-dm">Custom</h2>
+                  </div>
+                  <p class="text-xl leading-6">Se il sito è completamente statico e non c’è nessuna necessità di doverlo personalizzare costantemente la soluzione custom può essere un’ottima opzione.</p>
+                </div>
+              </div>
+              
+              <div class="mt-12 text-center">
+                <button class="bg-transparent border hover-this border-primary-900 px-8 py-3 text-primary-500 font-bold text-lg mt-5 rounded-3xl flex items-center gap-[6px] mx-auto btn-arrow">
+                    Scopri tutti i nostri servizi
+                  <svg width="18" height="12" viewBox="0 0 18 12" fill="red" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="17.3892" y1="7.35355" x2="13.2542" y2="3.21848" stroke="#ffff"/>
+                    <line y1="-0.5" x2="5.84787" y2="-0.5" transform="matrix(-0.707107 0.707107 0.707107 0.707107 17.7428 7)" stroke="#ffff"/>
+                    <line x1="0.699463" y1="7.03345" x2="17.0934" y2="7.03345" stroke="#ffff"/>
+                  </svg>    
+                </button>
+              </div>
+            </section>
+  
+            <section data-scroll class="overflow-hidden">
+              <div class="reveal-img no-aspect">
+                <img src="./assets/img/Rectangle20.png" class="w-full" alt="Rectangle20">
+              </div>
+            </section>
+  
+            <section data-scroll>
+              <div class="title font-helvetica flex gap-3 text-primary-500 text-base items-center">
+                <i></i>
+                <div>Alcune delle tecnologie che utilizziamo</div>
+              </div>
+              <div class="overflow-hidden">
+                <h1 class="font-medium text-primary-500 leading-12 sm:leading-[6.5rem] mt-6 text-4xl sm:text-[6rem]">Figma / AdobeXD /<br>Wordpress / Elementor /<br> ACF / Wpml / Boostrap /<br> Javascript</h1>
+              </div>
+              <p class="mt-5">/ e molto altro ancora</p>
+            </section>
+  
+            <section data-scroll>
+              <div class="overflow-hidden mb-5 text-center">
+                <h1 class="font-medium text-primary-500 text-center inline-block mb-6">Aziende con cui collaboriamo</h1>
+              </div>
+              <article class="wrapper logo-section1">
+                <div class="marquee">
+                  <div class="marquee">
+                    <div class="marquee__group">
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo2.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo3.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo4.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo5.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo6.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo7.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo8.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo9.png">
+                      </div>
+                    </div>
+                    <div aria-hidden="true" class="marquee__group">
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo2.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo3.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo4.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo5.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo6.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo7.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo8.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo9.png">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="marquee ">
+                  <div class="marquee marquee--reverse">
+                    <div class="marquee__group">
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo10.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo11.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo12.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo13.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo14.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo15.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo16.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo17.png">
+                      </div>
+                    </div>
+                    <div aria-hidden="true" class="marquee__group">
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo10.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo11.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo12.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo13.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo14.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo15.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo16.png">
+                      </div>
+                      <div class="logo">
+                        <img src="./assets/img/logos/logo17.png">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </section>
+  
+            <section data-scroll class="lg:mt-[18rem]">
+              <div class="overflow-hidden text-center">
+                <h1 class="font-medium text-primary-500 leading-12 sm:leading-[4.5rem] mt-6 text-4xl sm:text-[64px] text-center inline-block">Parlaci del tuo prossimo <br>progetto.</h1>
+              </div>
+              <div class="mt-12 text-center">
+                <button class="bg-white px-8 py-3 font-bold text-lg rounded-3xl flex items-center gap-[6px] mx-auto btn-arrow">
+                    Contattaci ora
+                  <svg width="18" height="12" viewBox="0 0 18 12" fill="red" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="17.3892" y1="7.35355" x2="13.2542" y2="3.21848" stroke="#27232C"/>
+                    <line y1="-0.5" x2="5.84787" y2="-0.5" transform="matrix(-0.707107 0.707107 0.707107 0.707107 17.7428 7)" stroke="#27232C"/>
+                    <line x1="0.699463" y1="7.03345" x2="17.0934" y2="7.03345" stroke="#27232C"/>
+                  </svg>
+                  
+                </button>
+              </div>
+            </section>
+          </main>
+        </div>
+
+        <footer class="sm:mt-[8rem] py-5">
+          <div class="container">
+            <div class="sm:grid grid-flow-row-dense sm:grid-cols-12 border-b border-primary-500 pb-8">
+              <div class="col-span-8 mb-5 sm:mb-0">
+                <img src="./assets/img/Logo.svg" class="mx-auto sm:mx-0">
+                <span class="sm:w-1/5 text-center sm:text-left mt-5 text-2xl text-primary-500 block">
+                  Il tuo partner per il design e sviluppo
+                </span>
+              </div>
+              <div class="col-span-2 text-center sm:text-left">
+                <span class="text-white font-bold text-base mb-4 block">Links</span>
+                <ul>
+                  <li class="mb-4">
+                    <a href="#">Home</a>
+                  </li>
+                  <li class="mb-4">
+                    <a href="#">Cosa Facciamo</a>
+                  </li>
+                  <li class="mb-4">
+                    <a href="#">Studio</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-span-2 text-center sm:text-left">
+                <span class="text-white font-bold text-base block mb-4">Studio</span>
+                <ul>
+                  <li class="mb-7">
+                    <a href="#">Via Valentini 9, 38060 Calliano (TN)</a>
+                  </li>
+                </ul>
+                <span class="text-white font-bold text-base mb-4 block">Contatti</span>
+                <ul>
+                  <li class="mb-4">
+                    <a href="#">aryan@blurr.it</a>
+                  </li>
+                  <li class="mb-4">
+                    <a href="#">+39 3770935429</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <span class="text-base pt-8 text-center sm:text-left block text-primary-500">Copyright 2022 Blurr.it | p.va 02559530221</sp>
+          </div>
+        </footer>
+      </div>
+      <div class="cursor"></div>
+  </body>
+  <script src="./assets/js/main.js"></script>
+</html>
