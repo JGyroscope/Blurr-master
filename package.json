@@ -2,7 +2,7 @@
   "name": "tailwind_sidebar",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "dev": "npx tailwindcss -i ./assets/css/index.css -o ./dist/output.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
