@@ -34,6 +34,7 @@ module.exports = {
         '12': '3rem',
         '13': '3.5rem',
         '20': '6rem',
+        '21': '7rem',
         '25': '7.5rem',
       },
       spacing: {
@@ -42,7 +43,8 @@ module.exports = {
         '25': '7.5rem',
       },
       letterSpacing: {
-        tight: "-0.03rem"
+        tight: "-0.03rem",
+        
       },
       fontSize: {
         "8xl": "6.5rem"
