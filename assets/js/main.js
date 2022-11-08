@@ -32,9 +32,9 @@ ScrollTrigger.defaults({ scroller: "[data-scroll-container]" });
 let body = document.querySelector("body")
 
 ScrollTrigger.create({
-  trigger: "#section3",
+  trigger: "#introduce-section",
   start: "top 50%+=100px",
-  endTrigger: "#section5",
+  endTrigger: "#experience-section",
   toggleActions: "play reverse play reverse",
   end: "bottom bottom",
   onToggle: self => {
@@ -43,7 +43,6 @@ ScrollTrigger.create({
     }else {
       body.setAttribute('class', 'light-mode')
     }
-    console.log("toggled, isActive:", self.isActive)
   },
   onUpdate: self => {
     // document.
@@ -58,12 +57,7 @@ ScrollTrigger.create({
   endTrigger: "footer",
   toggleActions: "play reverse play reverse",
   end: "bottom bottom",
-  onToggle: self => {
-    console.log("toggled, isActive:", self.isActive)
-  },
   onUpdate: self => {
-    console.log(self.direction, self.progress)
-    console.log(self.progress.toFixed(2)*1)
     if(self.direction == 1) {
       header.setAttribute("class", "down")
     }
@@ -80,7 +74,7 @@ ScrollTrigger.create({
 window.addEventListener("load", function () {
   let splitWords = function (selector) {
     var elements = document.querySelectorAll(selector);
-
+    
     elements.forEach(function (el) {
       el.dataset.splitText = el.textContent;
       el.innerHTML = el.textContent
@@ -158,7 +152,6 @@ window.addEventListener("load", function () {
       rotateZ: [10, 0],
       ease: Power3.out,
     });
-    
   });
 
 
@@ -193,7 +186,7 @@ pTags.forEach((element) => {
   pTagsTl.set(element, { autoAlpha: 1 });
   pTagsTl.from(element, 1, {
     yPercent: 25,
-    opacity:0,
+    opacity:1,
     ease: Power3.out,
     stagger: 2.5,
   });
@@ -236,7 +229,7 @@ revealImg.forEach((container) => {
   let image = container.querySelector("img");
   let imgTl = gsap.timeline({
     scrollTrigger: {
-      trigger: container
+      trigger: container,
     }
   });
 
@@ -272,6 +265,8 @@ gsap.to(".parallax-img", {
   ease: "none",
   scrollTrigger: {
     trigger: ".parallax-img",
+    // start: "top bottom", // the default values
+    // end: "bottom top",
     scrub: true
   }, 
 });
@@ -283,10 +278,9 @@ gsap.to(".parallax-img", {
 
   const link = document.querySelectorAll('nav > .hover-this');
   const cursor = document.querySelector('.cursor');
-  cursor.style.zIndex = 1000;
 
   const animateit = function (e) {
-        const span = this.querySelector('nav span');
+        const span = this.querySelector('span');
         const { offsetX: x, offsetY: y } = e,
         { offsetWidth: width, offsetHeight: height } = this,
 
@@ -310,10 +304,10 @@ gsap.to(".parallax-img", {
     cursor.style.left = x + 'px';
     cursor.style.top = y + 'px';
 
-    if (e.type === "mousemove") {
-      cursor.style.display = "block";
-    } else if (e.type === "mouseout") {
-      cursor.style.display = "none";
+    if (e.type === 'mouseout') {
+      cursor.style.display = 'none';
+    } else {
+      cursor.style.display = 'block';
     }
   };
 
@@ -321,7 +315,6 @@ gsap.to(".parallax-img", {
   link.forEach(b => b.addEventListener('mouseleave', animateit));
   window.addEventListener('mousemove', editCursor);
   window.addEventListener('mouseout', editCursor);
-
 })();
 
 var toggleBtn = document.querySelector("#toggle-button")
@@ -336,112 +329,26 @@ toggleBtn.addEventListener('click', function() {
   }
 })
 
-// Normal Button Animation
-
-const btnSVGList = document.querySelectorAll("button.btn-arrow svg");
-
-btnSVGList.forEach((svg) => {
-  const line1 = svg.children[0];
-  const line2 = svg.children[1];
-  const line3 = svg.children[2];
-  const btn = svg.parentElement;
-  let btnColor = "white";
-
-  if(btn.classList.contains("bg-white")) {
-    btnColor = "black";
-  }
-
-  const svgAnimation = (e) => {
-
-    const width = btn.offsetWidth;
-    
-    if(e.type === 'mouseover'){
-      btn.style.border = `1px solid ${btnColor}`;
-      btn.style.width = width + 9;
-
-      svg.setAttribute('width', '27');  
-      svg.setAttribute('height', '10');
-      svg.setAttribute('viewBox', '0 0 27 10');
-      svg.setAttribute('fill', 'none');
-
-      line1.setAttribute('x1', '26.4655');
-      line1.setAttribute('y1', '5.35355');
-      line1.setAttribute('x2', '22.3305');
-      line1.setAttribute('y2', '1.21848');
-      line1.setAttribute('stroke', btnColor);
-      
-      line2.setAttribute('y1', '-0.5');
-      line2.setAttribute('x2', '5.84787');
-      line2.setAttribute('y2', '-0.5');
-      line2.setAttribute('transform', 'matrix(-0.707107 0.707107 0.707107 0.707107 26.8191 5)');
-      line2.setAttribute('stroke', btnColor);
-      
-      line3.setAttribute('x1', '0.449219');
-      line3.setAttribute('y1', '5.03345');
-      line3.setAttribute('x2', '26.1697');
-      line3.setAttribute('y2', '5.03345');
-      line3.setAttribute('stroke', btnColor);
-      line3.setAttribute('duration', 2);
-
-      
-    } else {
-      btn.style.border ='1px solid rgb(63 57 70 / var(--tw-border-opacity))';
-      btn.style.width = width - 9;
-
-      svg.setAttribute('width', '18');
-      svg.setAttribute('height', '12');
-      svg.setAttribute('viewBox', '0 0 18 12');
-      svg.setAttribute('fill', 'red');
-
+const btnArrowHoverEvent = function(e) {
+  let spanItem = this.querySelector('span');
+  let colorArrow = this.classList.contains('bg-white') ? 'black' : 'white';
   
-      line1.setAttribute('x1', '17.3892');
-      line1.setAttribute('y1', '7.35355');
-      line1.setAttribute('x2', '13.2542');
-      line1.setAttribute('y2', '3.21848');
-      line1.setAttribute('stroke', btnColor);
-      
-      line2.setAttribute('y1', '-0.5');
-      line2.setAttribute('x2', '5.84787');
-      line2.setAttribute('y2', '-0.5');
-      line2.setAttribute('transform', 'matrix(-0.707107 0.707107 0.707107 0.707107 17.7428 7)');
-      line2.setAttribute('stroke', btnColor);
-      
-      line3.setAttribute('x1', '0.699463');
-      line3.setAttribute('y1', '7.03345');
-      line3.setAttribute('x2', '17.0934');
-      line3.setAttribute('y2', '7.03345');
-      line3.setAttribute('stroke', btnColor);
-
-    }
+  if (e.type === 'mouseover') {
+    spanItem.innerHTML = `<svg width="27" height="12" viewBox="0 0 27 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="inactive">
+      <line x1="26.4655" y1="7.35355" x2="22.3305" y2="3.21848" stroke="${colorArrow}"/>
+      <line y1="-0.5" x2="5.84787" y2="-0.5" transform="matrix(-0.707107 0.707107 0.707107 0.707107 26.8191 7)" stroke="${colorArrow}"/>
+      <line x1="0.449219" y1="7.03345" x2="26.1697" y2="7.03345" stroke="${colorArrow}"/>
+      </svg>`;
+  } else if (e.type === 'mouseleave') {
+    spanItem.innerHTML = `<svg width="18" height="12" viewbox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="active">
+      <line x1="17.3892" y1="7.35355" x2="13.2542" y2="3.21848" stroke="${colorArrow}"/>
+      <line y1="-0.5" x2="5.84787" y2="-0.5" transform="matrix(-0.707107 0.707107 0.707107 0.707107 17.7428 7)" stroke="${colorArrow}"/>
+      <line x1="0.699463" y1="7.03345" x2="17.0934" y2="7.03345" stroke="${colorArrow}"/>
+    </svg> `;
   }
+}
 
-  svg.parentElement.addEventListener("mouseover", svgAnimation);
-  svg.parentElement.addEventListener("mouseleave", svgAnimation);
+const btnArrowItems = document.querySelectorAll('.btn-arrow');
 
-  const cursor = document.querySelector('.cursor');
-
-  const hoverAnim = function (e) {
-    // const span = this.querySelector('span');
-    const { offsetX: x, offsetY: y } = e,
-    { offsetWidth: width, offsetHeight: height } = this,
-
-    move = 10,
-    xMove = x / width * (move * 2) - move,
-    yMove = y / height * (move * 2) - move;
-
-    this.style.transform = `translate(${xMove}px, ${yMove}px)`;
-    if(e.type === "mousemove") {
-      cursor.style.transform = 'translate(-50%, -50%) scale(8)';
-    }
-
-    if (e.type === 'mouseleave') {
-      this.style.transform = '';
-      cursor.style.transform = "none"
-    }
-  };
-  svg.parentElement.addEventListener("mousemove", hoverAnim);
-  svg.parentElement.addEventListener("mouseleave", hoverAnim);
-});
-
-
-
+btnArrowItems.forEach(e => e.addEventListener('mouseover', btnArrowHoverEvent));
+btnArrowItems.forEach(e => e.addEventListener('mouseleave', btnArrowHoverEvent));

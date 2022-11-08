@@ -50,7 +50,7 @@ header.up .logo-brand svg path {
 }
 
 body.light-mode header.up {
-  background-color: theme("colors.dark");
+  background-color: theme("colors.black");
 }
 
 body.light-mode header.up a span {
@@ -74,12 +74,11 @@ header span {
   transition: transform 0.1s linear;
 }
 
-
 .cursor {
   pointer-events: none;
   position: fixed;
   padding: 0.3rem;
-  background-color: #fff;
+  background-color: #FFFFFF;
   border-radius: 50%;
   mix-blend-mode: difference;
   transition: transform 0.3s ease;
@@ -102,6 +101,13 @@ header span {
         padding: 20px 0;
         display: inline-block;
   }
+
+  .btn-arrow {
+    width: max-content;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin: 0 auto !important;
+  }
 }
 
 h1, p, .title, h2 {
@@ -122,17 +128,13 @@ a {
 }
 
 main {
-    max-width: 1080px;
+    /* max-width: 1080px; */
     margin: auto;
 }
 
-section {
+/* section {
     padding: 8rem 0;
-}
-
-#section5 {
-  padding-top: 4rem;
-}
+} */
 
 section .title i {
   content: "";
@@ -175,7 +177,7 @@ section .title span {
   aspect-ratio: 0.8/1
 }
 
-.parallax-img {
+/* .parallax-img {
   display: block;
   position: absolute;
   top: -20%;
@@ -185,7 +187,7 @@ section .title span {
   object-fit: cover;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-}
+} */
 
 h1 {
     font-size: 48px;
@@ -257,15 +259,17 @@ p {
     transition: transform .2s ease-in-out;
 }
 
+
+
 .accordion button:not(.collapsed)::after {
     background-image: url("../assets/img/minus.png");
     transition: transform .2s ease-in-out;
 }
 
 @media(max-width: 1092px) {
-    section {
+    /* section {
         padding: 3rem 0;
-    }
+    } */
 
     .logo-section {
         position: relative;
@@ -273,8 +277,34 @@ p {
 }
 
 @media(max-width: 750px) {
-    section {
+    /* section {
         padding: 1rem 0;
+    } */
+
+    #nav-toggle {
+      background: theme("colors.black");
+    }
+    
+    #nav-toggle .nav a {
+      padding: 10px;
+    }
+
+    #tech-section h1 {
+      font-size: 36px !important;
+      letter-spacing: -0.8px !important;
+    }
+
+    #contact-section {
+      margin-top: 90px;
+    }
+
+    #contact-section h1 {
+      font-size: 36px;
+      letter-spacing: -0.8px;
+    }
+
+    footer br {
+      display: none;
     }
 
     .container {
@@ -288,7 +318,7 @@ p {
     p {
         font-size: 1.25rem;
         transition: 1s;
-    }
+    }    
 }
 
 .logo {
@@ -497,7 +527,33 @@ body.dark-mode i {
   background: theme("colors.primary.500");
 }
 
-body.dark-mode .cursor {
-    background-color: #fff;
+body.light-mode .cursor {
+  background-color: theme("colors.white");
 }
 
+.dark-mode #experience-section path, 
+.dark-mode #experience-section circle, 
+.dark-mode #experience-section line, 
+.dark-mode #experience-section rect {
+  stroke: theme("colors.white");
+}
+
+.light-mode #experience-section path, 
+.light-mode #experience-section circle, 
+.light-mode #experience-section line, 
+.light-mode #experience-section rect {
+  stroke: theme("colors.dark");
+}
+
+.btn-arrow {
+  margin-left: 40%;
+  transition: all 1s ease;
+}
+
+.btn-arrow span {
+  display: inline-block;
+}
+
+.btn-arrow:hover {
+  border-color: theme("colors.white");
+}
